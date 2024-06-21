@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Welcome{% endblock title %}
+{% block content %}
+    <div class="p-10 lg:p-20 text-center">
+        {% if request.user.is_authenticated %}
+            <h1 class="text-3xl lg:text-4xl text-white font-bold">Good day {{ user.username }} happy to see you in Socialising!</h1>
+        {% else %}
+            <h1 class="text-3xl lg:text-3xl text-white font-bold">Sorry we can't show anything to stangers!</h1>
+            <h6 class="text-3xl lg:text-1xl text-white">Please login or register</h6>
+        {% endif %}
+    </div>
+{% endblock content %}

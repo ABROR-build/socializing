@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock title %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-teal-600">
+    <nav class="flex items-center justify-between px-4 py-2 bg-teal-800">
+
+        {% if request.user.is_authenticated %}
+            <div>
+                <a href="#" class="text-xl text-white">{{ request.user.username }}</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="{% url 'rooms' %}" class="text-white hover:text-gray-300">Users</a>
+                <a href="{% url 'logout' %}" class="px-5 py-3 rounded-xl text-white bg-teal-600 hover:bg-teal-700">Logout</a>
+            </div>
+        {% else %}
+            <div>
+                <a href="#" class="text-xl text-white">Socialising</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="{% url 'login' %}" class="text-white hover:text-gray-300">Login</a>
+                <a href="{% url 'register' %}" class="px-5 py-3 rounded-xl text-white bg-teal-600 hover:bg-teal-700">Register</a>
+            </div>
+        {% endif %}
+
+    </nav>
+
+    {% block content %}
+    {% endblock content %}
+
+    {% block scripts %}
+    {% endblock scripts%}
+
+</body>
+</html>

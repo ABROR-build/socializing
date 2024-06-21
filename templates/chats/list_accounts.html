@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Users{% endblock title %}
+
+{% block content %}
+    {% for account in accounts %}
+        {% if not account == request.user %}
+            <div class="p-4 ml-20 mr-20 m-5 bg-gray-200 rounded-xl">
+                <img class="inline mr-3 h-10 rounded" src="{{ account.image.url }}"><a href="{% url 'send_message' account.id %}" class="font-semibold hover:text-gray-500">{{ account.username }}</a>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endblock content %}
